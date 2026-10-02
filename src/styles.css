@@ -1,0 +1,132 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * AD Property Rental — design system.
+ * Dark "console" identity: deep ink base, steel surfaces, volt cyan accent,
+ * flame orange for urgency. All tokens in oklch; never hardcode colors.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* #0a1020 */
+  --background: oklch(0.187 0.036 265);
+  /* #eef3ff */
+  --foreground: oklch(0.958 0.014 265);
+  /* #141d33 */
+  --surface: oklch(0.243 0.041 265);
+  --surface-2: oklch(0.213 0.038 265);
+  --card: oklch(0.243 0.041 265);
+  --card-foreground: oklch(0.958 0.014 265);
+  --popover: oklch(0.243 0.041 265);
+  --popover-foreground: oklch(0.958 0.014 265);
+
+  /* volt #00e0ff */
+  --primary: oklch(0.83 0.144 210);
+  --primary-foreground: oklch(0.187 0.036 265);
+
+  --secondary: oklch(0.29 0.04 265);
+  --secondary-foreground: oklch(0.958 0.014 265);
+
+  --muted: oklch(0.29 0.04 265);
+  --muted-foreground: oklch(0.72 0.025 265);
+
+  /* flame #ff5a2c */
+  --accent: oklch(0.68 0.208 36);
+  --accent-foreground: oklch(0.98 0.01 100);
+
+  --destructive: oklch(0.63 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 100);
+  --success: oklch(0.78 0.16 160);
+  --warning: oklch(0.83 0.15 85);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.83 0.144 210 / 60%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  input,
+  select,
+  textarea {
+    color-scheme: dark;
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  font-weight: 600;
+}
+
+@utility glow-panel {
+  border: 1px solid var(--color-border);
+  background-image: linear-gradient(
+    to bottom right,
+    color-mix(in oklab, var(--color-foreground) 8%, transparent),
+    color-mix(in oklab, var(--color-foreground) 2%, transparent)
+  );
+}
